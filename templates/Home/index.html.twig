@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+{% block title %}ajouter un cours{% endblock %}
+</head>
+{% block body %}
+       <section class="cours">
+
+        {% for cour in cours %}
+           <article>
+
+              <h2>{{cour.title}}</h2>
+              <h2>{{ cour.Auteur}}</h2>
+              <div class="metadata">Ecrit le {{cour.CreatedAt | date('d/m/Y')}} à{{cour.CreatedAt | date('H:i')}} dans la catégories Affaire   </div>
+              <div class="content">
+                 <img src="{{cour.poster}}">
+                 
+              </div>
+
+
+
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+
+</html>

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+     {% block title %}ajouter un cours{% endblock %}
+  </head>
+  {% endblock %}
+
+
+
+
+{% block body %}
+
+   <h2> creation d'un cours </h2>
+   {{  form_start(formCour)  }}
+
+     {{ form_row(formCour.Titre, {'attr': {'placeholder':'Titre de Cour'}} )
+   }}
+     {{ form_row(formCour.Auteur, {'attr':{'placeholder':'Auteur de Cour'}} )
+   }}
+     {{ form_row(formCour.description, {'attr':{'placeholder':'Description de cours'}} )
+   }}
+     {{ form_row(formCour.date, {'attr': {'placeholder':'Titre de Cour' }} )
+   }}
+     {{ form_row(formCour.poster, {'attr': {'placeholder':'URL de image ' }} )
+   }}
+
+      <button type="button" class="btn btn-primary">
+             {% if editMode %}
+                Enregistrer
+             {% else %}
+                Ajouter le cours
+             {% endif %}
+       </button>
+
+
+  {{ form_end(formCour) }}
+
+{% endblock %}
+

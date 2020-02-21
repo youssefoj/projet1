@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Les Cours</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+
+    <link rel="stylesheet" href="{{asset('css/open-iconic-bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/animate.css')}}">
+    
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
+
+    <link rel="stylesheet" href="{{asset('css/aos.css')}}">
+
+    <link rel="stylesheet" href="{{asset('css/ionicons.min.css')}}">
+
+    <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery.timepicker.css')}}">
+
+    
+    <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+  </head>
+  <body>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue pour les cours{% endblock %}
+{% block stylesheets %}
+  {{ parent() }}
+  <style>
+    ul{
+      list-style-type: none;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <a href="{{ path('ajouter_categorie') }}">Ajouter categ</a>
+    <div class="jumbotron">
+      <h1>BienVenue sur notres site de Cours , et Formations </h1>
+    </div>
+    <h2>Nos cours sont repartie en plusieurs section : </h2>
+    <table>
+      {% for c in cours %}
+        <tr>
+          <td>{{ c.titre }}</td>
+          <td> {{ c.auteur }} </td>
+          <td>  {{ c.date }}</td>
+          <td> {{ c.description }} </td>
+          <td>  {{ c.poster }} </td>
+          <td>
+            <a href="{{ path('modifier_cours', {'id': c.id}) }}">Modifier</a>
+            &nbsp;&nbsp;
+            <a href="{{ path('supp_cours', {'id': c.id}) }}">Supprimer</a>
+
+          </td>
+        </tr>
+      {% else %}
+        <h3>Aucun categorie dans la base</h3>
+      {% endfor %}
+    </table>
+  </div>
+
+{% endblock %}

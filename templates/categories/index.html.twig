@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List des categories{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        ul{
+            list-style-type: none;
+        }
+    </style>
+{% endblock %}
+
+
+
+
+
+{% block body %}
+
+     <button class ="close-button" aria-label="Dissmiss Alert" type="button" data-close >
+    <span aria-hidden="true">BcircleTime;</span>
+  </button>
+
+<div class=" grid-container-fluid">
+    <div class="grid-x grid-margin-x">
+        <div class="cell small-12 meduim 12">
+
+            <a class="button large"  href="{{ path('ajouter_categorie') }}">Ajouter </a>
+
+
+        </div>
+        <h2>Nos cours sont classé sous les catégories suivantes : </h2>
+        <table>
+            <thead>
+            <tr>
+                <th> Label </th>
+            </tr>
+            </thead>
+          <tbody>
+          {% for c in categories %}
+                <tr>
+                    <td>{{ c.nom }}</td>
+                    <td>
+                        <a href="{{ path('modifier_categorie', {'id': c.id}) }}">Modifier</a>
+                        &nbsp;&nbsp;
+                        <a href="{{ path('supp_categorie', {'id': c.id}) }}">Supprimer</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Cours{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        ul{
+            list-style-type: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-7">
+
+        {% for c in cours %}
+            <h3><span class="glyphicon glyphicon-cours"></span> Cours {{ c.id }}</h3>
+            <ul>
+                <li><span class="glyphicon glyphicon-menu-right"></span> <b>Titre :</b> {{ c.nom }}</li>
+                <li><span class="glyphicon glyphicon-menu-right"></span> <b>Description :</b> {{ c.duree }} min</li>
+                <li><span class="glyphicon glyphicon-menu-right"></span> <b>Date :</b> {{ c.annee }}</li>
+                <li><span class="glyphicon glyphicon-menu-right"></span> <b>Auteur : </b>{{ c.resume }}</li>
+                <li><span class="glyphicon glyphicon-menu-right"></span> <b>Catégories :</b> {{ c.categories.getNom() }}</li>
+            </ul>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
